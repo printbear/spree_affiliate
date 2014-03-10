@@ -10,15 +10,15 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/spree/spree_affiliate'
   s.summary     = 'Affiliate support for Spree'
   s.description = 'Affiliate support for Spree'
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 1.9.3'
   s.rubygems_version      = '1.3.6'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency('spree_core', '>= 0.40.0')
-  s.add_dependency('spree_auth', '>= 0.40.0')
-  s.add_dependency('spree_store_credits', '>= 1.0.0')
-  s.add_dependency('spree_email_to_friend', '>= 1.0.0')
+  s.add_dependency('spree_core', '~> 1.2.0')
+  s.add_dependency('spree_auth', '~> 1.2.0')
+  s.add_dependency('spree_store_credits', '~> 1.2.0')
+  s.add_dependency('spree_email_to_friend', '~> 1.2.0')
 end
