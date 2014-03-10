@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('spree_core', '~> 1.2.0')
-  s.add_dependency('spree_auth', '~> 1.2.0')
+  s.add_dependency('spree_auth_devise', '~> 1.2.0')
   s.add_dependency('spree_store_credits', '~> 1.2.0')
   s.add_dependency('spree_email_to_friend', '~> 1.2.0')
 end
