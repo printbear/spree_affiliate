@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency('spree_core', '~> 1.3.0')
   s.add_dependency('spree_auth_devise', '~> 1.0.0')
-  s.add_dependency('spree_store_credits', '~> 1.3.0')
+  s.add_dependency('spree_store_credits', '~> 1.1.1')
   s.add_dependency('spree_email_to_friend', '~> 1.3.0')
 end
