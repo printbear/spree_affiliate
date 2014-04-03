@@ -1,28 +1,55 @@
 <%= render 'spree/admin/shared/configuration_menu' %>
 
-<h1><%= t('affiliate_settings') %></h1>
-
-<%= form_tag(admin_affiliate_settings_path, :method => :put) do %>
-
-  <p>
-	<label><%= t("sender_credit_on_register_amount") %></label>
-	<%= text_field_tag('preferences[sender_credit_on_register_amount]', SpreeAffiliate::Config[:sender_credit_on_register_amount]) %>
-  </p>
-  <p>
-	<label><%= t('recipient_credit_on_register_amount') %></label>
-	<%= text_field_tag('preferences[recipient_credit_on_register_amount]', SpreeAffiliate::Config[:recipient_credit_on_register_amount])%>
-  </p>
-  <p>
-	<label><%= t("sender_credit_on_purchase_amount") %></label>
-	<%= text_field_tag('preferences[sender_credit_on_purchase_amount]', SpreeAffiliate::Config[:sender_credit_on_purchase_amount]) %>
-  </p>
-  <p>
-	<label><%= t('recipient_credit_on_purchase_amount') %></label>
-	<%= text_field_tag('preferences[recipient_credit_on_purchase_amount]', SpreeAffiliate::Config[:recipient_credit_on_purchase_amount])%>
-  </p>
-
-  <p class="form-buttons">
-    <%= button t('update') %>
-    <%= t("or") %> <%= link_to t("cancel"), admin_affiliate_settings_url %>
-  </p>
+<% content_for :page_title do %>
+  <%= Spree.t('affiliate_settings') %>
 <% end %>
+
+<%= form_tag admin_affiliate_settings_path, method: :put do %>
+  <div id="settings">
+    <fieldset class="general no-border-top">
+      <div class="field">
+        <%= label_tag nil, Spree.t(:sender_credit_on_register_amount) %>
+        <%= text_field_tag(
+          'preferences[sender_credit_on_register_amount]',
+          SpreeAffiliate::Config[:sender_credit_on_register_amount],
+          class: "pull-right"
+        ) %>
+      </div>
+      <div class="field">
+        <%= label_tag nil, Spree.t(:recipient_credit_on_register_amount) %>
+        <%= text_field_tag(
+          'preferences[recipient_credit_on_register_amount]',
+          SpreeAffiliate::Config[:recipient_credit_on_register_amount],
+          class: "pull-right"
+        )%>
+      </div>
+      <div class="field">
+        <%= label_tag nil, Spree.t(:sender_credit_on_purchase_amount) %>
+        <%= text_field_tag(
+          'preferences[sender_credit_on_purchase_amount]',
+          SpreeAffiliate::Config[:sender_credit_on_purchase_amount],
+          class: "pull-right"
+        ) %>
+      </div>
+      <div class="field">
+        <%= label_tag nil, Spree.t(:recipient_credit_on_purchase_amount) %>
+        <%= text_field_tag(
+          'preferences[recipient_credit_on_purchase_amount]',
+          SpreeAffiliate::Config[:recipient_credit_on_purchase_amount],
+          class: "pull-right"
+        ) %>
+      </div>
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'icon-refresh' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon(
+          'icon-remove',
+          Spree.t('actions.cancel'),
+          spree.edit_admin_affiliate_settings_path,
+          class: 'button'
+        ) %>
+      </div>
+    </fieldset>
+  </div>
+<% end %>
+
