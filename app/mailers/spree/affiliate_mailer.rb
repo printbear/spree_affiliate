@@ -7,6 +7,7 @@ class Spree::AffiliateMailer < ActionMailer::Base
     name = sender.name || "Your friend"
     amount = SpreeAffiliate::Config[:recipient_credit_on_register_amount].to_i
     subject = "#{name} sent you a $#{amount} #{Spree::Config[:site_name]} credit"
+
     mail(to: recipients, subject: subject)
   end
 end

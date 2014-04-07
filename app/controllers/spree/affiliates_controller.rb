@@ -5,7 +5,7 @@ class Spree::AffiliatesController < Spree::BaseController
   end
 
   def send_email
-    flash[:notice] = Spree.t('email_to_friend.mail_sent_to', email: recipient_email).html_safe
+    flash[:notice] = Spree.t('email_to_friend.mail_sent_to', email: params[:recipient_email]).html_safe
     flash[:notice] << ActionController::Base.helpers.link_to(Spree.t('email_to_friend.send_to_other'), email_to_friend_path(@object.class.name.downcase, @object)).html_safe
 
     sender = OpenStruct.new(name: params[:sender_name], email: params[:sender_email])
