@@ -1,8 +1,6 @@
 <p>
   <strong><%= t('affiliate_link') %>:</strong>
   <%= link_to root_url(ref_id: @user.ref_id), root_url(ref_id: @user.ref_id) %><br />
-  <%= link_to t('send_affiliate_link'), email_to_friend_url('affiliate', current_user.find_or_create_affiliate)
- %>
 </p>
 <% @affiliates = @user.affiliates.where("affiliate_email IS NOT NULL") %>
 <% if @affiliates.count > 0 %>
