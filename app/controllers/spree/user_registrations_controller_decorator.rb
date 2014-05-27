@@ -18,7 +18,7 @@ Spree::UserRegistrationsController.class_eval do
         affiliate.update_attribute(:user_id, @user.id)
       end
 
-      create_affiliate_credits(sender, @user, "register")
+      create_affiliate_credits(sender, @user, "register") if @user.affiliate_partner
     end
 
     cookies[:ref_id] = nil
