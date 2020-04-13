@@ -42,9 +42,8 @@ module AffiliateCredits
 
       if affiliate && affiliate.user.nil?
         affiliate.update_attribute(:user_id, @user.id)
+        create_affiliate_credits(sender, @user, "register") if @user.affiliate_partner
       end
-
-      create_affiliate_credits(sender, @user, "register") if @user.affiliate_partner
     end
 
     cookies[:ref_id] = nil
