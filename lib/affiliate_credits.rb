@@ -29,4 +29,23 @@ module AffiliateCredits
   def log_event(affiliate, user, credit, event)
     affiliate.events.create(reward: credit, name: event, user: user)
   end
+
+  def check_affiliate
+    return if cookies[:ref_id].blank? || @user.invalid?
+
+    if sender = Spree::User.find_by_ref_id(cookies[:ref_id])
+      affiliate = sender.affiliates.where(affiliate_email: @user.email).first
+
+      if affiliate.nil? && Spree::Affiliate.where(affiliate_email: @user.email).empty?
+        affiliate = sender.affiliates.create(affiliate_email: @user.email)
+      end
+
+      if affiliate && affiliate.user.nil?
+        affiliate.update_attribute(:user_id, @user.id)
+        create_affiliate_credits(sender, @user, "register") if @user.affiliate_partner
+      end
+    end
+
+    cookies[:ref_id] = nil
+  end
 end
